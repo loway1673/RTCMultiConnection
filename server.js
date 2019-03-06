@@ -85,7 +85,7 @@ function serverHandler(request, response) {
         }
 
         var matched = false;
-        ['/demos/', '/dev/', '/dist/', '/socket.io/', '/node_modules/canvas-designer/', '/admin/'].forEach(function(item) {
+        ['/demos/', '/dev/', '/dist/', '/socket.io/', '/node_modules/canvas-designer/', '/admin/', '/mediaserver/'].forEach(function(item) {
             if (filename.indexOf(resolveURL(item)) !== -1) {
                 matched = true;
             }
@@ -168,6 +168,8 @@ function serverHandler(request, response) {
                     filename = filename.replace(resolveURL('/demos/'), '');
                     filename = filename.replace(resolveURL('/demos'), '');
                     filename += resolveURL('/demos/index.html');
+                } else if (filename.indexOf(resolveURL('/mediaserver/')) !== -1) {
+                    filename += resolveURL('/mediaserver/index.html');
                 } else {
                     filename += resolveURL(config.homePage);
                 }
